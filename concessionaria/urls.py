@@ -20,6 +20,8 @@ from django.conf.urls.static import static
 from django.conf import settings
 from rest_framework import routers
 from carros.api import viewsets as carrosviewsets
+from pictures.conf import get_settings
+
 
 route = routers.DefaultRouter()
 route.register(r'carros', carrosviewsets.CarrosViewSet, basename="Carros")
@@ -28,3 +30,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include(route.urls))
 ]+static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+if get_settings().USE_PLACEHOLDERS:
+    urlpatterns += [
+        path("_pictures/", include("pictures.urls")),
+    ]

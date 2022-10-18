@@ -15,7 +15,7 @@ SECRET_KEY = 'django-insecure-)uhuy=ajt_r59o(%@xgf)$p4ya+les_d_$j#lm%55^!)4b1rur
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -27,10 +27,25 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'stdimage',
+    'pictures',
     'rest_framework',
     'carros',
 ]
+
+# the following are defaults, but you can override them
+PICTURES = {
+    "BREAKPOINTS": {
+        "xs": 576,
+        "s": 768,
+        "m": 992,
+        "l": 1200,
+        "xl": 1400,
+    },
+    "GRID_COLUMNS": 12,
+    "CONTAINER_WIDTH": 1200,
+    "FILE_TYPES": ["WEBP"],
+    "PIXEL_DENSITIES": [1, 2],
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
